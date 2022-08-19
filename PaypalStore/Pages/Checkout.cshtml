@@ -1,0 +1,34 @@
+﻿@page "/Checkout"
+@model PaypalStore.Pages.CheckoutModel
+@{
+}
+
+
+
+<div id="paypal-button-container" class=" container"></div>
+
+
+
+
+
+
+
+@*Checkout Scripts*@
+<script src="https://www.paypal.com/sdk/js?client-id=Abbbz7mYFgG5hWUA78ses0hQteEJKppjcwB-sAL87RNX4Jz_mKFeujeFpZtqcl0jrUD8yxB1DSy4F3mH"></script>
+<script>
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                // This function sets up the details of the transaction, including the amount and line item details.
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '0.01'
+                        }
+                    }]
+                });
+            }
+        }).render('#paypal-button-container');
+</script>
+
+
+
